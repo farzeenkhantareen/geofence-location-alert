@@ -1,56 +1,152 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+# Location Alert React Native 📍🔔
 
-## Get started
+A React Native location-based notification application that monitors predefined GPS coordinates and alerts users when they enter a specific geofence area.
 
-1. Install dependencies
+The app uses background location tracking and local notifications to detect when a user reaches configured locations.
 
-   ```bash
-   npm install
-   ```
+## Features
 
-2. Start the app
+- 📍 Background location tracking
+- 🗺️ Geofencing support
+- 🔔 Local push notifications
+- 📌 Multiple monitored GPS locations
+- 📏 Radius-based location detection
+- 🔄 Notification reset after leaving and re-entering a location
+- 📱 Android APK support
+- ⚡ Battery-efficient location monitoring
 
-   ```bash
-   npx expo start
-   ```
+## How It Works
 
-In the output, you'll find options to open the app in a
+The application contains predefined latitude and longitude coordinates.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+When the user enters the configured radius around any location:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+User enters geofence area
+↓
+Location detected
+↓
+Notification triggered
+↓
+"You have reached this location"
 
-### Other setup steps
+````
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## Development Setup
 
-## Learn more
+### Install dependencies
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+npm install
+````
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Start development server
 
-## Join the community
+```bash
+npx expo start
+```
 
-Join our community of developers creating universal apps.
+## Important Note About Expo Go
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This project was initially developed using Expo.
+
+Due to limitations with background location tracking and notification handling inside Expo Go, the application was tested using a generated Android APK.
+
+The complete functionality works after building and installing the APK on a physical device.
+
+## Build Android APK
+
+Install EAS CLI:
+
+```bash
+npm install -g eas-cli
+```
+
+Login:
+
+```bash
+eas login
+```
+
+Configure EAS:
+
+```bash
+eas build:configure
+```
+
+Create Android APK:
+
+```bash
+eas build --platform android --profile preview
+```
+
+After building:
+
+1. Download the APK
+2. Install it on an Android device
+3. Allow location permissions
+4. Allow notification permissions
+5. Start monitoring locations
+
+## Required Permissions
+
+### Android
+
+* Fine Location Permission
+* Background Location Permission
+* Notification Permission
+
+### iOS
+
+* Location When In Use Permission
+* Always Location Permission
+* Notification Permission
+
+## Project Structure
+
+```
+src/
+│
+├── screens/
+│   └── HomeScreen.js
+│
+├── services/
+│   ├── LocationService.js
+│   ├── GeofenceService.js
+│   └── NotificationService.js
+│
+└── constants/
+    └── locations.js
+```
+
+## Technologies Used
+
+* React Native
+* Expo
+* Expo Location
+* Expo Task Manager
+* Expo Notifications
+* JavaScript
+
+## Future Improvements
+
+* Dynamic location management
+* Backend integration
+* User-created geofences
+* Map visualization
+* Cloud notifications
+* Location history tracking
+
+## Learn More
+
+* Expo Documentation:
+  [https://docs.expo.dev/](https://docs.expo.dev/)
+
+* React Native Documentation:
+  [https://reactnative.dev/](https://reactnative.dev/)
+
+## Author
+
+Developed as a location-based notification system using React Native and Expo.
